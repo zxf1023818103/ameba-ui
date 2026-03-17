@@ -26,6 +26,7 @@ ameba_list_append(public_includes
     lvgl/demos/stress
     lvgl/demos/benchmark
     lvgl/demos/music
+    lvgl/examples/libs
     port/${c_SOC_TYPE}
 )
 
@@ -50,6 +51,8 @@ set(private_compile_options)
 file(GLOB_RECURSE LVGL_SRCS
     "lvgl/src/*.c"
     "lvgl/src/libs/libjpeg_turbo/lv_libjpeg_turbo.c"
+    "lvgl/src/libs/gif/gifdec.c"
+    "lvgl/src/libs/gif/lv_gif.c"
 )
 
 file(GLOB_RECURSE LVGL_DEMOS
@@ -59,6 +62,7 @@ file(GLOB_RECURSE LVGL_DEMOS
 
 file(GLOB_RECURSE LVGL_EXAMPLES
     "lvgl/examples/anim/*.c"
+    "lvgl/examples/libs/gif/*.c"
 )
 
 ameba_list_append(private_sources

@@ -8,9 +8,8 @@ set(public_libraries)               #public libraries(files), NOTE: linked with 
 
 #----------------------------------------#
 # Component public part, user config begin
-
 ameba_list_append(public_includes
-    lv_drivers/interfaces
+    ../include
 )
 
 # Component public part, user config end
@@ -40,22 +39,17 @@ set(private_compile_options)         #private compile_options
 # Component private part, user config begin
 
 ameba_list_append(private_sources
-    # lv_drivers/${c_SOC_TYPE}/src/display.c
-    lv_drivers/${c_SOC_TYPE}/src/lv_hal.c
+    lv_ameba_hal.c
 )
-if(CONFIG_AMEBASMART)
-    ameba_list_append(private_sources
-        lv_drivers/${c_SOC_TYPE}/src/touch.c
-    )
-endif()
 
-ameba_list_append(private_definitions
-    __RTOS__
-    NDEBUG
-)
 ameba_list_append(private_compile_options
-    -UDEBUG
     -Wno-incompatible-pointer-types
+)
+
+ameba_list_append(private_includes
+    ../include
+    ../../lvgl
+    ${c_CMPT_FWLIB_DIR}/jpeg_decoder/inc
 )
 
 # Component private part, user config end
